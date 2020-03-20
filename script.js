@@ -38,7 +38,16 @@ else{
 }
 hourBlock.append(timeSlot);
 
-scheduleTask.addClass("col-8 future");
+if(schedule[i].time<hourPresent){
+    scheduleTask.addClass("col-8 past");
+}
+else if(schedule[i].time==hourPresent) {
+    scheduleTask.addClass("col-8 present");
+}
+else {
+    scheduleTask.addClass("col-8 future");
+}
+
 hourBlock.append(scheduleTask);
 saveButton.addClass("col-2 saveBtn");
 hourBlock.append(saveButton);
