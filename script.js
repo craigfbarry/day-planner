@@ -12,15 +12,15 @@ var schedule = [
     {time:13, task:""},
     {time:14, task:""},
     {time:15, task:""},
-    {time:16, task:""},
-    {time:17, task:""},
+    {time:22, task:""},
+    {time:23, task:""},
 ];
 
 for (i=0;i<9;i++){
 
 var hourBlock = $("<div>")
 var timeSlot = $("<div>")
-var scheduleTask = $("<div>")
+var scheduleTask = $("<textarea>")
 var saveButton = $("<div>")
 
 //Code to dynamically add rows for each hour time slot and 3 columns for time, task, save button.
@@ -38,17 +38,19 @@ else{
 }
 hourBlock.append(timeSlot);
 
+//Logic to compare the current hour from moment.js to the time array and apply the right class
+
 if(schedule[i].time<hourPresent){
     scheduleTask.addClass("col-8 past");
 }
 else if(schedule[i].time==hourPresent) {
-    scheduleTask.addClass("col-8 present");
+    scheduleTask.addClass("col-8 present").attr("input");
 }
 else {
     scheduleTask.addClass("col-8 future");
 }
 
 hourBlock.append(scheduleTask);
-saveButton.addClass("col-2 saveBtn");
+saveButton.addClass("col-2 saveBtn fas fa-calendar-alt pt-4");
 hourBlock.append(saveButton);
 }
