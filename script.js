@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-//Added time and date with moment.Js will sort out formatting later
+//Added time and date with moment.Js
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
 
@@ -19,13 +19,13 @@ var schedule = [
 
 for (i=0;i<9;i++){
 
-
+//Place any local storage strings into the array.
 schedule[i].task = localStorage.getItem("savedTask"+(i+9));
 
 var hourBlock = $("<div>")
 var timeSlot = $("<div>")
 var scheduleTask = $("<textarea>")
-var saveButton = $("<div>")
+var saveButton = $("<i>")
 
 //Code to dynamically add rows for each hour time slot and 3 columns for time, task, save button.
 hourBlock.addClass("row time-block");
@@ -70,6 +70,7 @@ hourBlock.append(saveButton);
 }
 
 
+//Button function to store the appropriate schedule string to local storage
 $(".saveBtn").on("click", function(){
     
     let saveTime = ($(this).attr("hour"));
@@ -78,6 +79,4 @@ $(".saveBtn").on("click", function(){
     localStorage.setItem("savedTask"+saveTime,saveTask);
 
 });
-
-
 });
