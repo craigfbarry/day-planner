@@ -8,8 +8,8 @@ var hourPresent = moment().hour();
 var schedule = [
     {time:9, task:""},
     {time:10, task:""},
-    {time:11, task:"washing"},
-    {time:12, task:"Drying"},
+    {time:11, task:""},
+    {time:12, task:""},
     {time:13, task:""},
     {time:14, task:""},
     {time:15, task:""},
@@ -19,8 +19,8 @@ var schedule = [
 
 for (i=0;i<9;i++){
 
-localStorage.getItem("savedTime");
 
+schedule[i].task = localStorage.getItem("savedTask"+(i+9));
 
 var hourBlock = $("<div>")
 var timeSlot = $("<div>")
@@ -55,11 +55,9 @@ else {
 }
 
 
-//scheduleTask.attr("hour",schedule[i].time);
-//maybe remove one of these
+//Give the text area an ID and write any existing tasks from the array.
+
 scheduleTask.attr("id","task-time-"+schedule[i].time);
-
-
 scheduleTask.text(schedule[i].task);
 hourBlock.append(scheduleTask);
 
@@ -76,17 +74,7 @@ $(".saveBtn").on("click", function(){
     
     let saveTime = ($(this).attr("hour"));
     let saveTask = ($("#task-time-"+saveTime).val());
-    console.log(saveTime);
-    console.log(saveTask);
-    
-
-
-     
-
-    
-
-
-    localStorage.setItem("savedTime"+saveTime,saveTime);
+ 
     localStorage.setItem("savedTask"+saveTime,saveTask);
 
 });
